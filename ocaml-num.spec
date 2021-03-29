@@ -49,12 +49,20 @@ developing applications that use %{name}.
 %setup -q -n num-%{version}
 
 %build
-%{__make} %{?_smp_mflags} all
+%{__make} all \
+%if %{without ocaml_opt}
+	BNG_ARCH=generic \
+	ARCH=none
+%endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
+%if %{without ocaml_opt}
+	BNG_ARCH=generic \
+	ARCH=none \
+%endif
 	DESTDIR=$RPM_BUILD_ROOT \
 	OCAMLFIND_DESTDIR=$RPM_BUILD_ROOT%{_libdir}/ocaml
 
@@ -80,8 +88,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/ocaml/*.cmi
 %{_libdir}/ocaml/*.cmti
 %{_libdir}/ocaml/*.mli
+%{_libdir}/ocaml/libnums.a
 %if %{with ocaml_opt}
-%{_libdir}/ocaml/*.[ao]
 %{_libdir}/ocaml/*.cmx
 %{_libdir}/ocaml/*.cmxa
 %endif
