@@ -90,6 +90,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/ocaml/*.mli
 %{_libdir}/ocaml/libnums.a
 %if %{with ocaml_opt}
+%{_libdir}/ocaml/nums.a
 %{_libdir}/ocaml/*.cmx
 %{_libdir}/ocaml/*.cmxa
 %endif
