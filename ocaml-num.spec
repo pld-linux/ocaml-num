@@ -19,6 +19,7 @@ Version:	1.4
 Release:	2
 License:	LGPL v2+ with exceptions
 Group:		Libraries
+#Source0Download: https://github.com/ocaml/num/releases
 Source0:	https://github.com/ocaml/num/archive/v%{version}/%{module}-%{version}.tar.gz
 # Source0-md5:	cda2b727e116a0b6a9c03902cc4b2415
 URL:		https://github.com/ocaml/num
@@ -91,27 +92,45 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc Changelog README.md
-%attr(755,root,root) %{_libdir}/ocaml/stublibs/*.so
-%dir %{_libdir}/ocaml/%{module}
-%{_libdir}/ocaml/%{module}/META
+%doc Changelog LICENSE README.md
+%{_libdir}/ocaml/nums.cma
+%dir %{_libdir}/ocaml/num
+%{_libdir}/ocaml/num/META
 %dir %{_libdir}/ocaml/num-top
 %{_libdir}/ocaml/num-top/META
-%{_libdir}/ocaml/*.cma
 %{_libdir}/ocaml/num-top/num_top.cma
 %if %{with ocaml_opt}
-%attr(755,root,root) %{_libdir}/ocaml/*.cmxs
+%attr(755,root,root) %{_libdir}/ocaml/nums.cmxs
 %endif
+%attr(755,root,root) %{_libdir}/ocaml/stublibs/dllnums.so
 
 %files devel
 %defattr(644,root,root,755)
-%{_libdir}/ocaml/*.cmi
-%{_libdir}/ocaml/*.cmti
-%{_libdir}/ocaml/*.mli
+%{_libdir}/ocaml/arith_status.cmi
+%{_libdir}/ocaml/arith_status.cmti
+%{_libdir}/ocaml/arith_status.mli
+%{_libdir}/ocaml/big_int.cmi
+%{_libdir}/ocaml/big_int.cmti
+%{_libdir}/ocaml/big_int.mli
+%{_libdir}/ocaml/nat.cmi
+%{_libdir}/ocaml/nat.cmti
+%{_libdir}/ocaml/nat.mli
+%{_libdir}/ocaml/num.cmi
+%{_libdir}/ocaml/num.cmti
+%{_libdir}/ocaml/num.mli
+%{_libdir}/ocaml/ratio.cmi
+%{_libdir}/ocaml/ratio.cmti
+%{_libdir}/ocaml/ratio.mli
 %{_libdir}/ocaml/libnums.a
 %if %{with ocaml_opt}
+%{_libdir}/ocaml/arith_flags.cmx
+%{_libdir}/ocaml/arith_status.cmx
+%{_libdir}/ocaml/big_int.cmx
+%{_libdir}/ocaml/int_misc.cmx
+%{_libdir}/ocaml/nat.cmx
+%{_libdir}/ocaml/num.cmx
+%{_libdir}/ocaml/ratio.cmx
 %{_libdir}/ocaml/nums.a
-%{_libdir}/ocaml/*.cmx
-%{_libdir}/ocaml/*.cmxa
+%{_libdir}/ocaml/nums.cmxa
 %endif
-%{_libdir}/ocaml/num-top/*.cmi
+%{_libdir}/ocaml/num-top/num_top*.cmi
