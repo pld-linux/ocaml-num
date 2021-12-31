@@ -13,10 +13,12 @@
 
 %define		module	num
 Summary:	Legacy Num library for arbitrary-precision integer and rational arithmetic
+Summary(pl.UTF-8):	Stara biblioteka Num do arytmetyki dowolnej precyzji na liczbach całkowitych i wymiernych
 Name:		ocaml-num
 Version:	1.4
 Release:	2
-License:	LGPLv2+ with exceptions
+License:	LGPL v2+ with exceptions
+Group:		Libraries
 Source0:	https://github.com/ocaml/num/archive/v%{version}/%{module}-%{version}.tar.gz
 # Source0-md5:	cda2b727e116a0b6a9c03902cc4b2415
 URL:		https://github.com/ocaml/num
@@ -37,13 +39,31 @@ library, and older applications that already use Num are encouraged to
 switch to Zarith. Zarith delivers much better performance than Num and
 has a nicer API.
 
-%package        devel
-Summary:	Development files for %{name}
+%description -l pl.UTF-8
+Ta biblioteka implementuje arytmetykę dowolnej precyzji na dużych
+liczbach całkowitych i wymiernych.
+
+To jest stara biblioteka. Była częścią podstawowej dystrybucji OCamla
+(w otherlibs/num), ale obecnie jest rozprowadzana osobno. Nowe
+aplikacje wymagające arytmetyki dowolnej precyzji powinny używać
+biblioteki Zarith (https://github.com/ocaml/Zarith) zamiast Num, a w
+starszych aplikacjach wykorzystujących bibliotekę Num zaleca się
+przejść na Zarith. Zarith zapewnia lepszą wydajność i przyjemniejsze
+API.
+
+%package devel
+Summary:	Legacy Num library for arbitrary-precision integer and rational arithmetic - development part
+Summary(pl.UTF-8):	Stara biblioteka Num do arytmetyki dowolnej precyzji na liczbach całkowitych i wymiernych - część programistyczna
+Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
-%description    devel
-The %{name}-devel package contains libraries and signature files for
-developing applications that use %{name}.
+%description devel
+This package contains files needed to develop OCaml programs using Num
+library.
+
+%description devel -l pl.UTF-8
+Pakiet ten zawiera pliki niezbędne do tworzenia programów w OCamlu
+używających biblioteki Num.
 
 %prep
 %setup -q -n num-%{version}
