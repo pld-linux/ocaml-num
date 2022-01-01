@@ -16,7 +16,7 @@ Summary:	Legacy Num library for arbitrary-precision integer and rational arithme
 Summary(pl.UTF-8):	Stara biblioteka Num do arytmetyki dowolnej precyzji na liczbach całkowitych i wymiernych
 Name:		ocaml-num
 Version:	1.4
-Release:	2
+Release:	3
 License:	LGPL v2+ with exceptions
 Group:		Libraries
 #Source0Download: https://github.com/ocaml/num/releases
